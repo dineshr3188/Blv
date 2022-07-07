@@ -1,9 +1,5 @@
 package com.blv.tracker.application.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,8 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,20 +18,27 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-public class Task {
-	
+public class Images {
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@Column(name="name")
 	private String name;
-	@Column(name="percentage")
-	private Long percentage;
+	@Column(name="type")
+	private String type;
+	@Column
+    @Lob
+    private byte[] file;	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="floor_id",nullable=false)
-	private Floor floor;
-	
-	@OneToMany(mappedBy="task",cascade=CascadeType.ALL,orphanRemoval=true)
-	private Set<Images> images = new HashSet<Images>();
+	@JoinColumn(name="task_id",nullable=false)
+	private Task task;
+	public Images(String name, String type, byte[] file) {
+		super();
+		this.name = name;
+		this.type = type;
+		this.file = file;
+	}
 
+	
 }

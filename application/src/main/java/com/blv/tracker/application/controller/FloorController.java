@@ -19,6 +19,7 @@ import com.blv.tracker.application.service.FloorService;
 
 @RestController
 @RequestMapping("api/projects/{projectId}/floor/")
+@PreAuthorize("hasRole('ADMIN')")
 public class FloorController {
 
 	private FloorService floorService;

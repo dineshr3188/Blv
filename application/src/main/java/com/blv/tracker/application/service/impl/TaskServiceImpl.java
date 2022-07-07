@@ -38,7 +38,6 @@ public class TaskServiceImpl implements TaskService{
 		task.setId(taskDto.getId());
 		task.setName(taskDto.getName());
 		task.setPercentage(taskDto.getPercentage());
-		task.setImages(taskDto.getImages());
 		return task;
 	}
 	
@@ -47,7 +46,6 @@ public class TaskServiceImpl implements TaskService{
 		taskDto.setId(task.getId());
 		taskDto.setName(task.getName());
 		taskDto.setPercentage(task.getPercentage());
-		taskDto.setImages(task.getImages());
 		return taskDto;
 	}
 	

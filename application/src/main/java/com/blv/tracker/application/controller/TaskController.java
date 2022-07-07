@@ -2,9 +2,10 @@ package com.blv.tracker.application.controller;
 
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,7 +54,7 @@ public class TaskController {
 	}
 
 	@DeleteMapping("/{taskId}")
-	public ResponseEntity<String> deleteteFloor(@PathVariable(value = "projectId") Long projectId,
+	public ResponseEntity<String> deleteTask(@PathVariable(value = "projectId") Long projectId,
 			@PathVariable(value = "floorId") Long floorId,@PathVariable(value = "taskId") Long taskId) {
 		taskService.deleteTask(projectId, floorId,taskId);
 		return new ResponseEntity<>("Task deleted successfully", HttpStatus.OK);

@@ -20,6 +20,7 @@ import com.blv.tracker.application.service.ProjectService;
 
 @RestController
 @RequestMapping("api/projects/")
+@PreAuthorize("hasRole('ADMIN')")
 public class ProjectController {
 	
 	private ProjectService projectService;
